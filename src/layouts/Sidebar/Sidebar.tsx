@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import styles from './Sidebar.module.css';
+import styles from './Sidebar.module.css'
 
 const navItems = [
   { label: 'Dashboard', path: '/dashboard' },
@@ -19,23 +19,28 @@ const Sidebar = () => {
     <aside className={styles.sidebar}>
       <nav className={styles.nav}>
         <ul className={styles.navList}>
-          {navItems.map((item) => (
-            <li className={styles.navItem}>
-              <Link
-                to={item.path}
-                onclick={() => handleNavClick(item.path)}
-                className={`${styles.navLink} ${
-                  location.pathname === item.path ? styles.active : ''
-                }`}
-              >
-                {item.label}
-              </Link>
-            </li>
-          ))}
+          {navItems.map((item) => {
+
+  return (
+    <li key={item.path} className={styles.navItem}>
+      <Link
+        to={item.path}
+        onClick={() => handleNavClick(item.path)}
+        className={`${styles.navLink} ${
+          location.pathname === item.path ? styles.active : ''
+        }`}
+      >
+        {item.label}
+      </Link>
+    </li>
+  )
+})}
         </ul>
       </nav>
     </aside>
+    
   );
 };
+
 
 export default Sidebar;
